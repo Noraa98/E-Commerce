@@ -28,58 +28,65 @@
       </svg>
     </button>
     <div class="hidden grow w-full md:flex md:w-auto md:justify-center md:flex-1" id="navbar-default">
-      <ul
+     @if (isLogin == true) {
+         <ul
         class="ms-7 font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0"
       >
         <li>
           <a
-            href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            routerLink="/home"
+            routerLinkActive="text-white bg-green-300"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
             >Home</a
           >
         </li>
         <li>
           <a
-            href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            routerLink="/cart"
+            routerLinkActive="text-white bg-green-300"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
             >Cart</a
           >
         </li>
         <li>
           <a
-            href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            routerLink="/products"
+            routerLinkActive="text-white bg-green-300"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
             >Products</a
           >
         </li>
         <li>
           <a
-            href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            routerLink="/categories"
+            routerLinkActive="text-white bg-green-300"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
             >Categories</a
           >
         </li>
         <li>
           <a
-            href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            routerLink="/brands"
+            routerLinkActive="text-white bg-green-300"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
             >Brands</a
           >
         </li>
       </ul>
 
+     }
       <ul
         class="ms-auto font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0"
       >
         <li>
           <a
             href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
           >
             <i class="fab fa-facebook-f"></i>
@@ -88,7 +95,7 @@
         <li>
           <a
             href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
           >
             <i class="fab fa-linkedin-in"></i>
@@ -97,7 +104,7 @@
         <li>
           <a
             href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
           >
             <i class="fab fa-twitter"></i>
@@ -106,36 +113,42 @@
         <li>
           <a
             href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
           >
             <i class="fab fa-instagram"></i>
           </a>
         </li>
 
-        <li>
+        @if (isLogin == false) {
+            <li>
           <a
-            href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            routerLink="/login"
+            routerLinkActive="text-white bg-green-300"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
             >Login</a
           >
         </li>
         <li>
           <a
-            href="#"
-            class="block py-2 px-3 rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            routerLink="/register"
+            routerLinkActive="text-white bg-green-300"
+            class="block py-2 px-3 rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
             >Register</a
           >
         </li>
-        <li>
+        }
+       @else {
+         <li>
           <a
-            class="block py-2 px-3 cursor-pointer rounded-sm md:p-0 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            class="block py-2 px-3 cursor-pointer rounded-sm md:p-1 text-gray-600 hover:text-gray-800 transition-colors duration-200"
             aria-current="page"
             >Signout</a
           >
         </li>
+       }
       </ul>
     </div>
   </div>
