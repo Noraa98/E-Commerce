@@ -1,12 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
-@import "flowbite/src/themes/default";
+@import 'tailwindcss';
+@import 'flowbite/src/themes/default';
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
+@utility container {
+  margin-inline: auto;
+}
 :root {
   --main-color: #0aad0a;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px, rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  --font-family: "Edu NSW ACT Cursive", cursive, sans-serif;
+  --rating-color: #ffc908;
 }
+
 body {
   font-family: var(--font-family) !important;
 }
@@ -19,6 +28,49 @@ body {
   color: var(--light-color) !important;
   border-radius: 5px;
 }
+
+.rating-color {
+  color: var(--rating-color);
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+a,
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.product {
+  border-radius: 5px;
+  border: solid 1px var(--main-color);
+  transition: box-shadow 0.5s;
+  overflow: hidden;
+}
+
+.product:hover {
+  box-shadow: 0 0 10px #11bd1168;
+}
+
+.font-sm {
+  font-size: 12px;
+}
+.text-main {
+  color: var(--main-color);
+}
+.bg-main {
+  background-color: var(--main-color) !important;
+}
+.bg-main-light {
+  background-color: var(--light-color) !important;
+}
+
+.card{
+  @apply border border-gray-400 shadow-lg p-2 relative rounded;
+}
+
+
+
 
 .btn-main {
   background-color: var(--main-color);
