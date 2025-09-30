@@ -4,17 +4,14 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
-
   // private baseUrl = 'https://ecommerce.routemisr.com/api/v1/products';
 
-  private readonly httpClient = inject(HttpClient)
+  private readonly httpClient = inject(HttpClient);
 
-   getAllProducts(): Observable<any> {
-    return this.httpClient.get(environment.baseUrl + 'products');
+  getAllProducts(pageNumber: number = 1): Observable<any> {
+    return this.httpClient.get(`${environment.baseUrl}products?page=${pageNumber}`);
   }
-
-  
 }
