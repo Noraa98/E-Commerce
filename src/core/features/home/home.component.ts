@@ -1,34 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products/products.service';
 import { Product } from '../../models/product.interface';
+import { CardComponent } from '../../shared/components/card/card.component';
+import { MainSliderComponent } from "./components/main-slider/main-slider.component";
+import { PopularCategoriesComponent } from "./components/popular-categories/popular-categories.component";
+import { PopularProductsComponent } from "./components/popular-products/popular-products.component";
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [ MainSliderComponent, PopularCategoriesComponent, PopularProductsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent  implements OnInit {
-  productList: Product[] = [];
-
-private readonly productsService = inject(ProductsService)
-
-  ngOnInit(): void {
-    this.getAllPrpductsData();
-   
-  }
-
-  // Get all products
-  getAllPrpductsData(): void {
-    this.productsService.getAllProducts().subscribe({
-      next: (res) => {
-        console.log(res.data)
-        this.productList=res.data
-      },
-      error: (err) => {
-        console.error('Error fetching products:', err);
-      }
-    });
-  }
-
+export class HomeComponent {
+  
 }

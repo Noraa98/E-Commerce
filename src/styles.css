@@ -7,6 +7,11 @@
 @utility container {
   margin-inline: auto;
 }
+@layer components{
+  .btn{
+    @apply disabled:bg-gray-500 disabled:cursor-not-allowed bg-green-600 px-6 py-2 rounded border text-white my-1 block w-[95%] mx-auto hover:bg-green-900 transition-all duration-300
+  }
+}
 :root {
   --main-color: #0aad0a;
   --light-color: #f0f3f2;
@@ -19,7 +24,9 @@
 body {
   font-family: var(--font-family) !important;
 }
-
+.owl-theme .owl-dots .owl-dot span{
+  width: 10px;
+}
 .nav-link {
   transition: unset !important;
 }

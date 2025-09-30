@@ -1,0 +1,15 @@
+<div class="card overflow-hidden bg-white border rounded shadow-md p-1 group/card">
+  <img [src]="product.imageCover" class="w-full" height="200px" [alt]="product.title" />
+  <h3 class="text-green-700">{{ product.category.name }}</h3>
+  <h4 class="line-clamp-1">{{ product.title }}</h4>
+  <div class="flex items-center justify-between">
+    <span> {{ product.price }} EGP </span>
+    <span> <i class="fas fa-star text-yellow-500"></i> {{ product.ratingsAverage }} </span>
+  </div>
+
+    <button
+        class="btn translate-y-[130%]  group-hover/card:translate-y-0"
+      >
+        Add to cart
+      </button>
+</div>

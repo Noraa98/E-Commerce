@@ -1,22 +1,5 @@
-<section class="bg-gray-100 py-16 border border-gray-400">
-  <div class="container">
-    <h2 class="text-5xl text-green-800">Popular Products</h2>
-    
-    <!-- d grid -->
-    
-    <div class="parent mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      @for (product of productList.slice(0,8); track product.id) {
-        <div class="card">
-          <img [src]="product.imageCover" class="w-full h-[250px] rounded-t" [alt]="product.title" />
-          
-          <h3 class="text-sm text-green-700">category:{{ product.category.name }}</h3>
-          <h4 class="text-lg py-2">name {{ product.title.split(' ', 3).join(' ') }}</h4>
-          <div class="flex justify-between items-center">
-            <span> {{ product.price }} EGP </span>
-            <span> <i class="fas fa-star text-yellow-600"></i> {{ product.ratingsAverage }} </span>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
-</section>
+<app-main-slider></app-main-slider>
+
+<app-popular-categories></app-popular-categories>
+
+<app-popular-products></app-popular-products>
