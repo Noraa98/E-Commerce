@@ -1,1 +1,46 @@
-<p>details works!</p>
+<section class="py-14">
+  <div class="container max-w-5xl mx-auto">
+    <h1 class="text-center text-4xl  mb-8">Product Details</h1>
+    
+    <div class="grid sm:grid-cols-12 gap-6 bg-white shadow-md rounded-lg p-5">
+      <!-- Product Image -->
+      <div class="col-span-12 sm:col-span-4">
+        <img 
+          [src]="productDetails.imageCover" 
+          [alt]="productDetails.title" 
+          class="w-full rounded-lg hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+      
+      <!-- Product Details -->
+      <div class="col-span-12 sm:col-span-8 flex flex-col justify-end">
+        <div>
+          <h2 class="text-2xl  mb-2">{{ productDetails.title }}</h2>
+          
+          <p class="text-sm mb-2">
+            {{ productDetails.description }}
+          </p>
+          
+          <span class="inline-block text-sm mb-3">
+            {{ productDetails.category?.name }}
+          </span>
+        </div>
+        
+        <!-- Price and Rating -->
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xl font-semibold">{{ productDetails.price }} EGP</span>
+          
+          <span class="flex items-center gap-1">
+            <i class="fas fa-star text-yellow-500"></i>
+            <span>{{ productDetails.ratingsAverage }}</span>
+          </span>
+        </div>
+        
+        <!-- Add to Cart Button -->
+        <button class="btn">
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

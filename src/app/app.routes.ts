@@ -49,7 +49,10 @@ export const routes: Routes = [
                 path:'categories' ,component:CategoriesComponent ,title:'categories Page'
             },
             {
-                path:'details' ,component:DetailsComponent ,title:'categories Page'
+                path:'details/:slug/:id' ,component:DetailsComponent ,title:'details Page'
+            },
+            {
+                path:'details/:id' ,component:DetailsComponent ,title:'details Page'
             },
             {
                 path:'checkout' ,component:CheckoutComponent ,title:'chekout Page'
