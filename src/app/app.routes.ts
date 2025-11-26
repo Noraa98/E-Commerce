@@ -12,6 +12,8 @@ import { CategoriesComponent } from '../core/features/categories/categories.comp
 import { DetailsComponent } from '../core/features/details/details.component';
 import { CheckoutComponent } from '../core/features/checkout/checkout.component';
 import { NotfoundComponent } from '../core/features/notfound/notfound.component';
+import { authGuard } from '../core/guards/auth-guard';
+import { isLoggedGuard } from '../core/guards/is-logged-guard';
 
 export const routes: Routes = [
     { 
@@ -20,6 +22,7 @@ export const routes: Routes = [
     {
         path:'' ,
         component:AuthLayoutComponent,
+        canActivate:[isLoggedGuard],
         children :[
             {
                 path:'login' ,component:LoginComponent ,title:'login Page'
@@ -32,9 +35,10 @@ export const routes: Routes = [
     {
         path:'' ,
         component:BlankLayoutComponent,
+        canActivate:[authGuard],
         children :[
             {
-                path:'home' ,component:HomeComponent ,title:'home Page'
+                path:'home' ,component:HomeComponent ,title:'home Page' 
             },
             {
                 path:'cart' ,component:CartComponent ,title:'cart Page'

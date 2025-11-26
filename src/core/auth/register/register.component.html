@@ -1,1 +1,127 @@
-<p>register works!</p>
+<section class="bg-gray-100 shadow-md rounded-lg p-6 max-w-lg mx-auto mt-10">
+  <h1 class="text-center text-3xl font-light text-main mb-4">Register</h1>
+
+  <form [formGroup]="registerForm" (ngSubmit)="submit()" class="space-y-4">
+
+    <!-- Name -->
+    <div>
+      <label 
+      [class]="{
+        'border-green-700':registerForm.get('name')?.valid,
+        'border-red-700':registerForm.get('name')?.invalid && registerForm.get('name')?.touched 
+      }"
+      for="name" 
+      class="block mb-1 text-sm font-medium text-gray-700">Name</label>
+      
+      <input
+       [class]="{
+        'border-green-700':registerForm.get('name')?.valid,
+        'border-red-700':registerForm.get('name')?.invalid && registerForm.get('name')?.touched 
+      }"
+       formControlName="name" id="name" type="text"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
+             placeholder="Your name" />
+
+      @if (hasError('name', 'required')) {
+        <p class="text-red-500 text-sm mt-1">Name is required</p>
+      }
+      @if (hasError('name', 'minlength')) {
+        <p class="text-red-500 text-sm mt-1">Min length is 3 characters</p>
+      }
+      @if (hasError('name', 'maxlength')) {
+        <p class="text-red-500 text-sm mt-1">Max length is 20 characters</p>
+      }
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="email" class="block mb-1 text-sm font-medium text-gray-700">Email</label>
+      <input formControlName="email" id="email" type="email"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
+             placeholder="example@mail.com" />
+
+      @if (hasError('email', 'required')) {
+        <p class="text-red-500 text-sm mt-1">Email is required</p>
+      }
+      @if (hasError('email', 'email')) {
+        <p class="text-red-500 text-sm mt-1">Enter a valid email</p>
+      }
+    </div>
+
+    <!-- Password -->
+    <div>
+      <label for="password" class="block mb-1 text-sm font-medium text-gray-700">Password</label>
+      <input
+     
+       formControlName="password"
+       id="password" type="password"
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
+      placeholder="*******" />
+
+      @if (hasError('password', 'required')) {
+        <p class="text-red-500 text-sm mt-1">Password is required</p>
+      }
+      @if (hasError('password', 'minlength')) {
+        <p class="text-red-500 text-sm mt-1">Min length is 6 characters</p>
+      }
+      @if (hasError('password', 'pattern')) {
+        <p class="text-red-500 text-sm mt-1">Password must contain uppercase, lowercase, number, and special character</p>
+      }
+    </div>
+
+    <!-- Confirm Password -->
+    <div>
+      <label for="rePassword" class="block mb-1 text-sm font-medium text-gray-700">Confirm Password</label>
+      <input formControlName="rePassword" id="rePassword" type="password"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
+             placeholder="*******" />
+
+      @if (hasError('rePassword', 'required')) {
+        <p class="text-red-500 text-sm mt-1">Confirm password is required</p>
+      }
+      @if (hasPasswordMismatch()) {
+        <p class="text-red-500 text-sm mt-1">Passwords do not match</p>
+      }
+    </div>
+
+    <!-- Phone -->
+    <div>
+      <label for="phone" class="block mb-1 text-sm font-medium text-gray-700">Phone</label>
+      <input formControlName="phone" id="phone" type="text"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
+             placeholder="01xxxxxxxxx" />
+
+      @if (hasError('phone', 'required')) {
+        <p class="text-red-500 text-sm mt-1">Phone is required</p>
+      }
+      @if (hasError('phone', 'pattern')) {
+        <p class="text-red-500 text-sm mt-1">Enter a valid Egyptian phone number (starts with 01)</p>
+      }
+    </div>
+
+    <!-- Server Error -->
+    @if (errorMsg()) {
+      <div class="bg-red-100 text-red-700 p-2 rounded">
+        {{ errorMsg() }}
+      </div>
+    }
+
+    <!-- Submit -->
+    <button type="submit"
+            [disabled]="registerForm.invalid || loading()"
+            class="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white w-full mt-2 py-2.5 rounded-lg font-medium transition-colors">
+
+      @if (loading()) {
+        <i class="fa fa-spinner fa-spin"></i> Loading...
+      } @else {
+        Register
+      }
+    </button>
+
+  </form>
+</section>
