@@ -1,1 +1,38 @@
-<p>brands works!</p>
+<section class="brands-container">
+
+  <h2 class="title">All Brands</h2>
+
+  <!-- Loading -->
+   @if(isLoading) {
+     <div class="loading">Loading brands...</div>
+   }
+ 
+
+  <!-- Error -->
+   @if(!isLoading && errorMsg) {  
+<div class="error">{{ errorMsg }}</div>
+     }
+
+  <!-- Empty -->
+   @if(!isLoading && !errorMsg && brands.length === 0) {
+<div  class="empty">
+    No brands found
+  </div>
+   }
+  
+
+  <!-- Brands Grid -->
+   @if(!isLoading && brands.length){
+    <div class="grid">
+   @for( brand of brands; track brand._id) {
+      <div class="brand-card" >
+      <img [src]="brand.image" [alt]="brand.name" />
+      <h3>{{ brand.name }}</h3>
+    </div>
+
+   }
+  </div>
+   }
+  
+
+</section>
