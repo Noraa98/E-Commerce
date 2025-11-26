@@ -4,7 +4,7 @@
   <div class="col-span-8 items-start  rounded-lg shadow p-4">
     <div class="flex items-center space-x-4">
       <h1 class="text-3xl">Cart</h1>
-      <span class="text-orange-700">{{cartDetails.products.length}} Items</span>
+      <span class="text-orange-700">{{cartDetails?.products?.length}} Items</span>
     </div>
 
     <!-- Cart Item -->
@@ -67,7 +67,8 @@
       <span class="text-green-700 text-xl">{{cartDetails.totalCartPrice}} EGP</span>
    </div>
 
-    <button class="bg-green-600 text-white w-full py-2 rounded-lg mt-4 hover:bg-green-700 transition">
+    <button  routerLink="/checkout"
+    class="bg-green-600 text-white w-full py-2 rounded-lg mt-4 hover:bg-green-700 transition">
       Proceed to Checkout
     </button>
   </div>

@@ -1,1 +1,37 @@
-<p>categories works!</p>
+<section class="container">
+
+  <h2 class="title">All Categories</h2>
+
+  <!-- Loading -->
+   @if(isLoading) {
+     <div class="loading">Loading...</div>
+   }
+
+
+  <!-- Error -->
+   @if (!isLoading && errorMsg) {
+ <div  class="error">{{ errorMsg }}</div>
+   }
+ 
+
+  <!-- Empty -->
+   @if(!isLoading && !errorMsg && categories.length === 0) {
+      <div class="empty">
+    No categories found
+  </div>
+   }
+
+
+  <!-- Categories Grid -->
+   @if(!isLoading && categories.length){
+<div class="grid">
+    <div class="category-card" *ngFor="let cat of categories">
+      <img [src]="cat.image" [alt]="cat.name" />
+      <h3>{{ cat.name }}</h3>
+    </div>
+  </div>
+   }
+  
+
+</section>
+

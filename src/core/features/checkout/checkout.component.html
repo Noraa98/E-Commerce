@@ -1,1 +1,272 @@
-<p>checkout works!</p>
+<section class="bg-gray-100 py-16">
+  <div class="container mx-auto px-4">
+    
+    <!-- Page Header -->
+    <div class="mb-8">
+      <h1 class="text-center text-4xl font-bold text-gray-800 mb-2">
+        <i class="fa fa-credit-card text-green-600"></i> Checkout
+      </h1>
+      <p class="text-center text-gray-600">Complete your order</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      
+      <!-- Checkout Form -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          
+          <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+            Shipping Information
+          </h2>
+
+          <form [formGroup]="checkoutForm" (ngSubmit)="submit()">
+            
+            <div formGroupName="shippingAddress" class="space-y-5">
+              
+              <!-- Details (Address) -->
+              <div>
+                <label for="details" class="block mb-2 text-sm font-medium text-gray-700">
+                  <i class="fa fa-map-marker text-gray-500"></i> Detailed Address
+                </label>
+                <textarea 
+                  formControlName="details" 
+                  id="details"
+                  rows="4"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                         focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
+                  placeholder="Street name, building number, floor, apartment..."></textarea>
+
+                @if (hasError('shippingAddress', 'details', 'required')) {
+                  <p class="text-red-500 text-sm mt-1">Address details are required</p>
+                }
+                @if (hasError('shippingAddress', 'details', 'minlength')) {
+                  <p class="text-red-500 text-sm mt-1">Address must be at least 10 characters</p>
+                }
+              </div>
+
+              <!-- City -->
+              <div>
+                <label for="city" class="block mb-2 text-sm font-medium text-gray-700">
+                  <i class="fa fa-building text-gray-500"></i> City
+                </label>
+                <input 
+                  formControlName="city" 
+                  id="city" 
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                         focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
+                  placeholder="Cairo, Alexandria, Giza..." />
+
+                @if (hasError('shippingAddress', 'city', 'required')) {
+                  <p class="text-red-500 text-sm mt-1">City is required</p>
+                }
+                @if (hasError('shippingAddress', 'city', 'minlength')) {
+                  <p class="text-red-500 text-sm mt-1">City must be at least 3 characters</p>
+                }
+              </div>
+
+              <!-- Phone -->
+              <div>
+                <label for="phone" class="block mb-2 text-sm font-medium text-gray-700">
+                  <i class="fa fa-phone text-gray-500"></i> Phone Number
+                </label>
+                <input 
+                  formControlName="phone" 
+                  id="phone" 
+                  type="tel"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                         focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
+                  placeholder="01xxxxxxxxx" />
+
+                @if (hasError('shippingAddress', 'phone', 'required')) {
+                  <p class="text-red-500 text-sm mt-1">Phone number is required</p>
+                }
+                @if (hasError('shippingAddress', 'phone', 'pattern')) {
+                  <p class="text-red-500 text-sm mt-1">Enter a valid Egyptian phone number</p>
+                }
+              </div>
+
+            </div>
+
+            <!-- Payment Method Selection -->
+            <div class="mt-8">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                <i class="fa fa-credit-card text-gray-600"></i> Payment Method
+              </h3>
+
+              <div class="grid md:grid-cols-2 gap-4">
+                
+                <!-- Cash on Delivery -->
+                <div 
+                  (click)="setPaymentMethod('cash')"
+                  class="border-2 rounded-lg p-4 cursor-pointer transition-all hover:shadow-md"
+                  [class.border-green-600]="paymentMethod() === 'cash'"
+                  [class.bg-green-50]="paymentMethod() === 'cash'"
+                  [class.border-gray-300]="paymentMethod() !== 'cash'">
+                  <div class="flex items-center gap-3">
+                    <input 
+                      type="radio" 
+                      name="paymentMethod" 
+                      [checked]="paymentMethod() === 'cash'"
+                      class="w-4 h-4 text-green-600">
+                    <div class="flex-1">
+                      <h4 class="font-semibold text-gray-800">
+                        <i class="fa fa-money text-green-600"></i> Cash on Delivery
+                      </h4>
+                      <p class="text-sm text-gray-600 mt-1">Pay when you receive your order</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Online Payment -->
+                <div 
+                  (click)="setPaymentMethod('online')"
+                  class="border-2 rounded-lg p-4 cursor-pointer transition-all hover:shadow-md"
+                  [class.border-green-600]="paymentMethod() === 'online'"
+                  [class.bg-green-50]="paymentMethod() === 'online'"
+                  [class.border-gray-300]="paymentMethod() !== 'online'">
+                  <div class="flex items-center gap-3">
+                    <input 
+                      type="radio" 
+                      name="paymentMethod" 
+                      [checked]="paymentMethod() === 'online'"
+                      class="w-4 h-4 text-green-600">
+                    <div class="flex-1">
+                      <h4 class="font-semibold text-gray-800">
+                        <i class="fa fa-credit-card text-blue-600"></i> Online Payment
+                      </h4>
+                      <p class="text-sm text-gray-600 mt-1">Pay securely with credit card</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Error Message -->
+            @if (errorMsg()) {
+              <div class="mt-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                <i class="fa fa-exclamation-circle"></i> {{ errorMsg() }}
+              </div>
+            }
+
+            <!-- Submit Button -->
+            <button 
+              type="submit"
+              [disabled]="checkoutForm.invalid || loading()"
+              class="w-full mt-8 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 
+                     disabled:cursor-not-allowed text-white py-3 rounded-lg font-semibold 
+                     text-lg transition-colors">
+              @if (loading()) {
+                <i class="fa fa-spinner fa-spin"></i> Processing...
+              } @else {
+                @if (paymentMethod() === 'cash') {
+                  <i class="fa fa-check-circle"></i> Place Order (Cash on Delivery)
+                } @else {
+                  <i class="fa fa-lock"></i> Proceed to Payment
+                }
+              }
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <!-- Order Summary -->
+<div class="lg:col-span-1">
+  <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
+    
+    <h2 class="text-xl font-bold text-gray-800 mb-4">
+      <i class="fa fa-shopping-bag text-green-600"></i> Order Summary
+    </h2>
+
+    <!-- Loading Cart -->
+    @if (loading() && !cartData()) {
+      <div class="text-center py-8">
+        <i class="fa fa-spinner fa-spin text-2xl text-green-600"></i>
+        <p class="mt-2 text-sm text-gray-600">Loading cart...</p>
+      </div>
+    }
+
+    <!-- Cart Items -->
+    @else if (cartData()?.products) {
+      <div class="space-y-3 mb-6 max-h-64 overflow-y-auto">
+        @for (item of cartData()?.products; track item._id) {
+          <div class="flex gap-3 pb-3 border-b border-gray-200">
+            <img 
+              [src]="item.product.imageCover" 
+              [alt]="item.product.title"
+              class="w-16 h-16 object-cover rounded">
+            <div class="flex-1">
+              <h4 class="text-sm font-semibold text-gray-800 line-clamp-1">
+                {{ item.product.title }}
+              </h4>
+              <p class="text-xs text-gray-600">Qty: {{ item.count }}</p>
+              <p class="text-sm font-bold text-green-600">
+                {{ item.price }} EGP
+              </p>
+            </div>
+          </div>
+        } @empty {
+          <p class="text-gray-500 text-center py-4">No items in cart</p>
+        }
+      </div>
+
+      <!-- Price Summary -->
+      <div class="space-y-3 mb-6">
+        <div class="flex justify-between text-gray-600">
+          <span>Items ({{ getCartItemsCount() }})</span>
+          <span class="font-semibold">{{ cartData()?.totalCartPrice }} EGP</span>
+        </div>
+        <div class="flex justify-between text-gray-600">
+          <span>Shipping</span>
+          <span class="font-semibold text-green-600">Free</span>
+        </div>
+        <div class="flex justify-between text-gray-600">
+          <span>Tax</span>
+          <span class="font-semibold">0 EGP</span>
+        </div>
+        
+        <div class="border-t pt-3">
+          <div class="flex justify-between text-lg font-bold text-gray-800">
+            <span>Total</span>
+            <span class="text-green-600">{{ getCartTotalPrice() }} EGP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Info -->
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <div class="flex items-start gap-2">
+          <i class="fa fa-info-circle text-blue-600 mt-1"></i>
+          <div class="text-sm text-blue-800">
+            <p class="font-semibold mb-1">Secure Checkout</p>
+            <p>Your payment information is encrypted and secure.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trusted Payment Methods -->
+      <div class="mt-6">
+        <p class="text-xs text-gray-500 text-center mb-2">We Accept</p>
+        <div class="flex justify-center items-center gap-3 flex-wrap">
+          <i class="fa fa-cc-visa text-3xl text-blue-600"></i>
+          <i class="fa fa-cc-mastercard text-3xl text-red-600"></i>
+          <i class="fa fa-cc-paypal text-3xl text-blue-500"></i>
+          <i class="fa fa-credit-card text-3xl text-gray-600"></i>
+        </div>
+      </div>
+
+    } @else {
+      <p class="text-gray-500 text-center py-8">Cart is empty</p>
+    }
+
+  </div>
+</div>
+
+    </div>
+
+  </div>
+</section>

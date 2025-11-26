@@ -11,59 +11,89 @@ import { BrandsComponent } from '../core/features/brands/brands.component';
 import { CategoriesComponent } from '../core/features/categories/categories.component';
 import { DetailsComponent } from '../core/features/details/details.component';
 import { CheckoutComponent } from '../core/features/checkout/checkout.component';
+import { AllOrdersComponent } from '../core/features/checkout/allorders.component';
 import { NotfoundComponent } from '../core/features/notfound/notfound.component';
 import { authGuard } from '../core/guards/auth-guard';
 import { isLoggedGuard } from '../core/guards/is-logged-guard';
 
 export const routes: Routes = [
-    { 
-        path:'' ,redirectTo:"home",pathMatch:'full'
-    },
-    {
-        path:'' ,
-        component:AuthLayoutComponent,
-        canActivate:[isLoggedGuard],
-        children :[
-            {
-                path:'login' ,component:LoginComponent ,title:'login Page'
-            },
-            {
-                path:'register' ,component:RegisterComponent ,title:'register Page'
-            }
-        ]
-    },
-    {
-        path:'' ,
-        component:BlankLayoutComponent,
-        canActivate:[authGuard],
-        children :[
-            {
-                path:'home' ,component:HomeComponent ,title:'home Page' 
-            },
-            {
-                path:'cart' ,component:CartComponent ,title:'cart Page'
-            },
-            {
-                path:'products' ,component:ProductsComponent ,title:'products Page'
-            },
-            {
-                path:'brands' ,component:BrandsComponent ,title:'brands Page'
-            },
-            {
-                path:'categories' ,component:CategoriesComponent ,title:'categories Page'
-            },
-            {
-                path:'details/:slug/:id' ,component:DetailsComponent ,title:'details Page'
-            },
-            {
-                path:'details/:id' ,component:DetailsComponent ,title:'details Page'
-            },
-            {
-                path:'checkout' ,component:CheckoutComponent ,title:'chekout Page'
-            }
-        ]
-    },
-    {
-        path:'**' ,component:NotfoundComponent , title:'notfound Page'
-    }
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    canActivate: [isLoggedGuard],
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+        title: 'login Page',
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        title: 'register Page',
+      },
+    ],
+  },
+  {
+    path: '',
+    component: BlankLayoutComponent,
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent,
+        title: 'home Page',
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
+        title: 'cart Page',
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+        title: 'products Page',
+      },
+      {
+        path: 'brands',
+        component: BrandsComponent,
+        title: 'brands Page',
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+        title: 'categories Page',
+      },
+      {
+        path: 'details/:slug/:id',
+        component: DetailsComponent,
+        title: 'details Page',
+      },
+      {
+        path: 'details/:id',
+        component: DetailsComponent,
+        title: 'details Page',
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+        title: 'chekout Page',
+      },
+      {
+        path: 'allorders',
+        component: AllOrdersComponent,
+        title: 'all orders Page',
+      },
+    ],
+  },
+  {
+    path: '**',
+    component: NotfoundComponent,
+    title: 'notfound Page',
+  },
 ];
