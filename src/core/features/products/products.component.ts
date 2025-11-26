@@ -3,10 +3,12 @@ import { CardComponent } from '../../shared/components/card/card.component';
 import { Product } from '../../models/product.interface';
 import { ProductsService } from '../../services/products/products.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchPipe } from '../../shared/pipes/search-pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
-  imports: [CardComponent, NgxPaginationModule],
+  imports: [CardComponent, NgxPaginationModule,SearchPipe,FormsModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
@@ -18,6 +20,7 @@ export class ProductsComponent implements OnInit {
   total: number = 0; // Total items
   isLoading: boolean = false;
 
+  searchTerm: string = '';
   private readonly productsService = inject(ProductsService);
 
   ngOnInit(): void {

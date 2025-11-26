@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductDetailsService } from './services/product-details.service';
 import { Product } from '../../models/product.interface';
+import { CartService } from '../cart/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details',
@@ -41,5 +43,25 @@ export class DetailsComponent implements OnInit {
       }
     });
   }
+
+  private readonly cartService = inject(CartService);
+  private readonly toastrService = inject(ToastrService)
+
+          
+  
+    addProductItemToCart(id: string): void {
+      this.cartService.addProductToCart(id).subscribe({
+        next: (response) => {
+          console.log('Product added to cart successfully:', response);
+          if(response.status === 'success'){
+            this.toastrService.success(response.message, 'FreshCart');
+          }
+        },
+        error: (error) => {
+          console.error('Error adding product to cart:', error);
+        }
+      });     
+    }
+  
 
 }

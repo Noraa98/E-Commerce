@@ -37,8 +37,11 @@
         </div>
         
         <!-- Add to Cart Button -->
-        <button class="btn">
+        <button 
+          (click)="addProductItemToCart(productDetails.id)"
+        class="btn">
           Add To Cart
+          
         </button>
       </div>
     </div>

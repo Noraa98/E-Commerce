@@ -1,1 +1,75 @@
-<p>cart works!</p>
+<div class="container grid sm:grid-cols-12 gap-10">
+
+  <!-- Cart Header -->
+  <div class="col-span-8 items-start  rounded-lg shadow p-4">
+    <div class="flex items-center space-x-4">
+      <h1 class="text-3xl">Cart</h1>
+      <span class="text-orange-700">{{cartDetails.products.length}} Items</span>
+    </div>
+
+    <!-- Cart Item -->
+   @for (item of cartDetails.products; track item.product._id) {
+     <div class="bg-white p-2 rounded shadow my-2  grid sm:grid-cols-12">
+
+      <!-- Product Image -->
+      <div class="col-span-1">
+        <img [src]="item.product.imageCover" class="w-full" [alt]="item.product.title" />
+      </div>
+
+      <!-- Product Info -->
+      <div class="col-span-11 flex items-center justify-between px-4">
+        <div>
+          <h3 class="text-lg font-semibold mb-2">{{item.product.title}}</h3>
+
+          <div class="flex items-center space-x-6 my-3">
+
+            <!-- Increment / decrement -->
+            <div class="bg-gray-200 border rounded-lg flex items-center space-x-10 py-1 px-2">
+              <button
+              (click)="updateItemQuantity(item.product._id , item.count-1)"
+               class="cursor-pointer">
+                <i class="fas fa-minus"></i>
+              </button>
+
+              <span>{{item.count}}</span>
+
+              <button 
+              (click)="updateItemQuantity(item.product._id , item.count+1)"
+              class="cursor-pointer">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+
+            <!-- delete -->
+            <button
+            (click)="removeItemFromCart(item.product._id)"
+             class="cursor-pointer">
+              <i class="fas fa-trash-can"></i>
+            </button>
+
+          </div>
+
+        </div>
+     <span>{{item.price * item.count}}EGP</span>
+      </div>
+
+    </div>
+   }
+
+  </div>
+
+  <!-- Payment Summary -->
+  <div class="col-span-4 bg-white rounded-lg shadow p-4">
+    <div class="text-xl font-semibold">Order Summary</div>
+
+   <div class="flex justify-between items-center my-4">
+      <span class="text-green-700 text-xl">Total Price</span>
+      <span class="text-green-700 text-xl">{{cartDetails.totalCartPrice}} EGP</span>
+   </div>
+
+    <button class="bg-green-600 text-white w-full py-2 rounded-lg mt-4 hover:bg-green-700 transition">
+      Proceed to Checkout
+    </button>
+  </div>
+
+</div>
