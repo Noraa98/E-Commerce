@@ -4,7 +4,7 @@
   "framework": null,
   "buildCommand": "npm run build -- --configuration production",
   "outputDirectory": "dist/e-commerce/browser",
-  "installCommand": "npm install",
+  "installCommand": "npm install --legacy-peer-deps",
   "rewrites": [
     {
       "source": "/(.*)",
