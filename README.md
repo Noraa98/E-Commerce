@@ -133,7 +133,7 @@ npx angular-cli-ghpages --dir=dist/E-Commerce
 Noura — Full Stack .NET & Angular Developer
 GitHub: https://github.com/Noraa98
 
-LinkedIn: (add your profile)
+LinkedIn: https://www.linkedin.com/in/noura-ahmed-36779b304
 
 📜 License
 
