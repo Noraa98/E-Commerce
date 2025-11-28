@@ -62,7 +62,7 @@ https://Noraa98.github.io/E-Commerce/
 - TypeScript  
 - RxJS  
 - HTML5 / SCSS  
-- Bootstrap / Custom Styling  
+- Tailwind CSS / Bootstrap / Custom Styling  
 - Toastr Notifications  
 
 ### Tools
