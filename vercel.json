@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "public": false,
+  "framework": null,
+  "buildCommand": "npm run build -- --configuration production",
+  "outputDirectory": "dist/e-commerce/browser",
+  "installCommand": "npm install",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
