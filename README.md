@@ -107,16 +107,16 @@ https://Noraa98.github.io/E-Commerce/
 ```bash
 git clone https://github.com/Noraa98/E-Commerce.git
 
-2. Install dependencies
+### 2. Install dependencies
 npm install
 
-3. Run the app
+### 3. Run the app
 ng serve
 
 
 Visit: http://localhost:4200/
 
-📦 Build & Deployment
+## 📦 Build & Deployment
 Build for production
 ng build --configuration production
 
@@ -124,17 +124,14 @@ Deploy to GitHub Pages
 ng build --output-path dist --base-href "/E-Commerce/"
 npx angular-cli-ghpages --dir=dist/E-Commerce
 
-📸 Screenshots
 
-(Add screenshots of Home, Products, Cart, Login, Checkout if you want)
-
-👩‍💻 Author
+## 👩‍💻 Author
 
 Noura — Full Stack .NET & Angular Developer
 GitHub: https://github.com/Noraa98
 
 LinkedIn: https://www.linkedin.com/in/noura-ahmed-36779b304
 
-📜 License
+##📜 License
 
 MIT
