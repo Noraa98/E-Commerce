@@ -1,59 +1,140 @@
-# ECommerce
+# 🚀 E-Commerce Web Application (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
+A modern, responsive, and fully-functional E-Commerce web application built with Angular, featuring authentication, advanced cart management, checkout, and a complete payment workflow. The application is fully deployed live using GitHub Pages.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🔗 Live Demo
+https://Noraa98.github.io/E-Commerce/
 
+---
+
+## 🏷️ Project Highlights
+- Fully responsive modern UI  
+- Dynamic product catalog (listing + details)  
+- Cart module (add / remove / update + totals)  
+- Persistent cart using LocalStorage  
+- JWT-based authentication (Login + Register)  
+- Auth Guards to protect restricted pages  
+- Complete payment module (validation + confirmation)  
+- Toastr notifications for user feedback  
+- Clean folder structure following Angular best practices  
+- Deployed on GitHub Pages
+
+---
+
+## ✨ Features
+
+### 🛍️ Product Management
+- Product listing with clean grid design  
+- Product details page with full information  
+- Search & filtering (if enabled)  
+
+### 🛒 Cart Module
+- Add, remove, and update items  
+- Auto total price calculation  
+- Cart data saved in LocalStorage  
+
+### 🔐 Authentication
+- Login and registration  
+- JWT token stored securely  
+- Protected routes using Angular Guards  
+- Redirect behavior for unauthorized users  
+
+### 💳 Payment Module
+- Full checkout flow  
+- Validate user & cart before payment  
+- Payment confirmation page  
+- Clears cart after successful payment  
+
+### 🎨 UI / UX Enhancements
+- Toastr notifications  
+- Loading states  
+- Reusable components  
+- Clean and responsive SCSS styling  
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+- Angular  
+- TypeScript  
+- RxJS  
+- HTML5 / SCSS  
+- Bootstrap / Custom Styling  
+- Toastr Notifications  
+
+### Tools
+- Angular CLI  
+- Node.js  
+- Git & GitHub  
+- GitHub Pages  
+
+---
+
+## 📂 Project Structure
+
+/src
+├── app
+│ ├── auth
+│ │ ├── login
+│ │ ├── register
+│ │ └── auth.service.ts
+│ ├── payment
+│ │ ├── checkout
+│ │ └── payment.service.ts
+│ ├── cart
+│ │ ├── cart.component.ts
+│ │ └── cart.service.ts
+│ ├── products
+│ │ ├── product-list
+│ │ ├── product-details
+│ │ └── product.service.ts
+│ ├── shared
+│ │ ├── components
+│ │ ├── guards
+│ │ └── models
+│ └── app-routing.module.ts
+└── assets
+
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 ```bash
+git clone https://github.com/Noraa98/E-Commerce.git
+
+2. Install dependencies
+npm install
+
+3. Run the app
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+Visit: http://localhost:4200/
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+📦 Build & Deployment
+Build for production
+ng build --configuration production
 
-```bash
-ng generate component component-name
-```
+Deploy to GitHub Pages
+ng build --output-path dist --base-href "/E-Commerce/"
+npx angular-cli-ghpages --dir=dist/E-Commerce
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+📸 Screenshots
 
-```bash
-ng generate --help
-```
+(Add screenshots of Home, Products, Cart, Login, Checkout if you want)
 
-## Building
+👩‍💻 Author
 
-To build the project run:
+Noura — Full Stack .NET & Angular Developer
+GitHub: https://github.com/Noraa98
 
-```bash
-ng build
-```
+LinkedIn: (add your profile)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+📜 License
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT
